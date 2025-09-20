@@ -18,7 +18,10 @@ Prior to predictive modeling, we understand data trends. We plot the distributio
 A positive but weak correlation is observed between the number of the initial tumors and the number of times that patient is likely to have disease recurring. When comparing likelihood of disease recurrence based on treatment received, we notice a disproportionate number of patients that received placebo treatment have had their disease recurr. These trends while interesting need to be further tested through the predictive model.
 
 ## Modeling 
-
+With the goal of running an initial predictive model, we use logistic regression. First, data is split into train/test subsets with the target feature being the binary outcome of disease recurrence or not. Data is scaled and a gridsearchCV is performed for parameter tuning. We explore both Lasso and Ridge regression and extract the best model. Given that target feature is well balanced, accuracy score is used as an initial evaluation metric then a confusion matrix is explored. 
 
 ## Model Findings 
+One of the biggest challenges of this dataset is the number of patient it captures. That being said, we expect this to be a problem in most healthcare situation where good and consistent record keeping of patient journeys is limited. As such, we expect the lower accuracy score of 63% to be driven by the sample size. Additional models should also be explored and assessed for their predictive accuracy. 
 
+Based on the coefficients of the regression model, we see that the longer the interval of duration on disease, the less likely patients are to have recurrence. Having a larger number of initial tumors increases chances of recureence. From a treatment choice perspective, we see that placebo patients are at higher risk of recurrence and the size of initial tumor slightly increases that risk as noted earlier. There is little correlation between patient status and disease recurrence.
+     
